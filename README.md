@@ -53,3 +53,7 @@ sequenceDiagram
 ## What's in this repo vs. what's not
 
 This extract includes the auth architecture, the tenant-isolation reasoning, and representative UI screenshots. It omits the production source tree, real tenant/patient data, pricing and go-to-market docs, and infrastructure credentials — those stay in the private repo.
+
+Happy to walk through the architecture in more depth on a technical call.
+
+**[Book a meeting](https://calendar.app.google/5FeUeC4X1VBYt2bU6)** · [eugeniozamora.com](https://eugeniozamora.com) · [LinkedIn](https://www.linkedin.com/in/eugeniozamora/) · [GitHub](https://github.com/eugeniozamora)
