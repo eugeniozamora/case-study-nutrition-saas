@@ -1,4 +1,4 @@
-# DietaNeo Pro — Multi-Tenant SaaS for Nutrition Professionals
+# Zymsia Pro — Multi-Tenant SaaS for Nutrition Professionals
 
 A production Next.js platform that gives nutrition professionals their own branded practice — patient management, AI-assisted coaching, and a patient-facing portal — running on shared infrastructure with hard tenant isolation.
 
