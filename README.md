@@ -1,6 +1,6 @@
 # Zymsia Pro — Multi-Tenant SaaS for Nutrition Professionals
 
-A production Next.js platform that gives nutrition professionals their own branded practice — patient management, AI-assisted coaching, and a patient-facing portal — running on shared infrastructure with hard tenant isolation.
+A deployed Next.js platform that gives nutrition professionals their own branded practice — patient management, AI-assisted coaching, and a patient-facing portal — running on shared infrastructure with hard tenant isolation.
 
 This repo is a sanitized case-study extract: architecture, decisions, and UI, not the production source.
 
