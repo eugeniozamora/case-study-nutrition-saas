@@ -4,6 +4,8 @@ A deployed Next.js platform that gives nutrition professionals their own branded
 
 This repo is a sanitized case-study extract: architecture, decisions, and UI, not the production source.
 
+**Role:** Product & Delivery Lead: product definition, architecture decisions, delivery governance and QA, with Claude Code as the execution team ([PM-led, AI-executed delivery](https://github.com/eugeniozamora/pm-led-delivery)).
+
 ## The problem
 
 Nutrition professionals need software, but not each their own server. The platform had to serve many independent practices (tenants) from one codebase and one database, while guaranteeing that a coach at Tenant A can never see, query, or leak into Tenant B's patients — and that patients themselves get a lightweight, no-signup-friction way to talk to their coach.
@@ -52,7 +54,7 @@ sequenceDiagram
 
 ## What's in this repo vs. what's not
 
-This extract includes the auth architecture, the tenant-isolation reasoning, and representative UI screenshots. It omits the production source tree, real tenant/patient data, pricing and go-to-market docs, and infrastructure credentials — those stay in the private repo.
+This extract includes the auth architecture, the tenant-isolation reasoning, and representative UI screenshots. It omits the production source tree, tenant and patient data, pricing and go-to-market docs, and infrastructure credentials — those stay in the private repo.
 
 Happy to walk through the architecture in more depth on a technical call.
 
