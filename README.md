@@ -6,6 +6,10 @@ This repo is a sanitized case-study extract: architecture, decisions, and UI, no
 
 **Role:** Program Manager: product definition, architecture decisions, program governance and QA, with Claude Code as the execution team ([Idea to Launch method](https://github.com/eugeniozamora/idea-to-launch)).
 
+## Try it
+
+**[pro.zymsia.com](https://pro.zymsia.com) → "Entrar en la demo".** One click, no sign-up: it opens a fictional practice with sample patients. The data resets every night and no emails are ever sent. (The UI is in Spanish.)
+
 ## The problem
 
 Nutrition professionals need software, but not each their own server. The platform had to serve many independent practices (tenants) from one codebase and one database, while guaranteeing that a coach at Tenant A can never see, query, or leak into Tenant B's patients — and that patients themselves get a lightweight, no-signup-friction way to talk to their coach.
@@ -36,21 +40,25 @@ sequenceDiagram
 
 **Magic links over passwords for patients.** Patients are not the ones paying for or configuring the software — they're being invited into it. A password-reset flow is friction and a support burden; a magic link with a long-lived, auto-refreshing session cookie removes both.
 
+**A public demo that is safe by design.** Visitors get in with one click and no sign-up, so the safeguards live on the server rather than in the UI: access uses a Firebase token for a fixed demo user (no shared password), outbound email is switched off, patient data is written only through validated API routes (Firestore rules deny direct client writes), and a nightly job restores the demo to a clean state.
+
 ## Tech stack
 
 | Layer | Choice | Why |
 |---|---|---|
-| Frontend | Next.js 14 (TypeScript), Vercel | preview deployments per PR, fast edge rendering |
+| Frontend | Next.js 16 (TypeScript), Vercel | CI gate (lint, type-check, build) on every PR, fast edge rendering |
 | Auth | Firebase Auth, custom tokens + claims | tenant/role scoping enforced at the token level |
 | Data | Firebase / Firestore | tenant-partitioned collections, security rules as a second enforcement layer |
 | Observability | Sentry (client + server + edge) | catch tenant-isolation regressions in production, not just in review |
-| CI/CD | Vercel preview deploys, `develop` → `main` flow | reviewable before every prod release |
+| CI/CD | Branch deploys: `develop` → staging, `main` → production | reviewable before every prod release |
 
 ## Product surface
 
 - Coach-facing dashboard: patient roster, plan builder, AI-assisted coaching suggestions
 - Patient-facing portal: no-signup magic-link access, progress tracking
 - Multi-environment setup: isolated dev and prod Firebase projects, not just config flags
+
+Built for dietitians, but the core (tenant isolation, the magic-link portal, and the session → guidance → reminder loop) generalizes to any 1:1 follow-up practice: physiotherapists, personal trainers, speech therapists.
 
 ## What's in this repo vs. what's not
 
