@@ -10,6 +10,10 @@ This repo is a sanitized case-study extract: architecture, decisions, and UI, no
 
 **[pro.zymsia.com](https://pro.zymsia.com) → "Entrar en la demo".** One click, no sign-up: it opens a fictional practice with sample patients. The data resets every night and no emails are ever sent. (The UI is in Spanish.)
 
+## Beyond nutrition
+
+Built for dietitians, but the core (tenant isolation, the magic-link portal, and the session → guidance → reminder loop) generalizes to any 1:1 follow-up practice: **therapists, personal trainers, coaches**.
+
 ## The problem
 
 Nutrition professionals need software, but not each their own server. The platform had to serve many independent practices (tenants) from one codebase and one database, while guaranteeing that a coach at Tenant A can never see, query, or leak into Tenant B's patients — and that patients themselves get a lightweight, no-signup-friction way to talk to their coach.
@@ -57,8 +61,6 @@ sequenceDiagram
 - Coach-facing dashboard: patient roster, plan builder, AI-assisted coaching suggestions
 - Patient-facing portal: no-signup magic-link access, progress tracking
 - Multi-environment setup: isolated dev and prod Firebase projects, not just config flags
-
-Built for dietitians, but the core (tenant isolation, the magic-link portal, and the session → guidance → reminder loop) generalizes to any 1:1 follow-up practice: physiotherapists, personal trainers, speech therapists.
 
 ## What's in this repo vs. what's not
 
